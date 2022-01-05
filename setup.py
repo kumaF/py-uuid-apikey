@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyuuidapikey", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Kumara Fernando",
     author_email="mklmfernando@gmail.com",
     description="Simple package to generate and validate uuid and related apikey",

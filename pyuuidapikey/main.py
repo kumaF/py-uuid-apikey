@@ -121,7 +121,6 @@ class UUIDAPIKey:
         if api_check and uuid_check:
             uuid_to_check: str = self.to_uuid(apikey)
 
-            print(uuid_to_check)
             return uuid == uuid_to_check
 
         err_msg: str = ''
