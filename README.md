@@ -1,5 +1,6 @@
 # pyuuidapikey
 
+**A Simple package to generate and validate uuid and apikey key pairs**
 
 ## Install
 ```

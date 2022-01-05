@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.2",
     author="Kumara Fernando",
     author_email="mklmfernando@gmail.com",
-    description="Simple package to generate and validate uuid and related apikey",
+    description="Simple package to generate and validate uuid and apikey key pairs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/kumaF/pyuuidapikey",
