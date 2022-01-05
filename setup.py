@@ -8,10 +8,10 @@ setuptools.setup(
     version="0.0.2",
     author="Kumara Fernando",
     author_email="mklmfernando@gmail.com",
-    description="Simple package to generate and validate uuid and apikey key pairs",
+    description="A Simple package to generate and validate UUID and API key pairs",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/kumaF/pyuuidapikey",
+    url="https://github.com/kumaF/py-uuid-apikey",
     packages=setuptools.find_packages(),
     install_requires=[            # I get to this in a second
           'BaseHash'
