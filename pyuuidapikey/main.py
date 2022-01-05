@@ -56,8 +56,6 @@ class UUIDAPIKey:
             s3: str = uuid[16:24]
             s4: str = uuid[24:32]
 
-            print(s1)
-
             n1: int = int(f'0x{s1}', 0)
             n2: int = int(f'0x{s2}', 0)
             n3: int = int(f'0x{s3}', 0)
@@ -93,19 +91,20 @@ class UUIDAPIKey:
             n3: int = self._hashfunc.unhash(e3)
             n4: int = self._hashfunc.unhash(e4)
 
-            s1: str = '{0:X}'.format(n1).lower()
-            s2: str = '{0:X}'.format(n2).lower()
-            s3: str = '{0:X}'.format(n3).lower()
-            s4: str = '{0:X}'.format(n4).lower()
+            s1: str = '{0:X}'.format(n1).lower().rjust(8, '0')
+            s2: str = '{0:X}'.format(n2).lower().rjust(8, '0')
+            s3: str = '{0:X}'.format(n3).lower().rjust(8, '0')
+            s4: str = '{0:X}'.format(n4).lower().rjust(8, '0')
 
             s2a: str = s2[0:4]
             s2b: str = s2[4:8]
             s3a: str = s3[0:4]
             s3b: str = s3[4:8]
 
-            return f'{s1}={s2a}-{s2b}-{s3a}-{s3b}{s4}'
-        
-        raise TypeError(f'The value provide \'{apikey}\' is not a valid apikey.')
+            return f'{s1}-{s2a}-{s2b}-{s3a}-{s3b}{s4}'
+
+        raise TypeError(
+            f'The value provide \'{apikey}\' is not a valid apikey.')
 
     def validate(self, apikey: str, uuid: str):
         if not bool(apikey):
@@ -121,4 +120,25 @@ class UUIDAPIKey:
 
         if api_check and uuid_check:
             uuid_to_check: str = self.to_uuid(apikey)
-            
+
+            print(uuid_to_check)
+            return uuid == uuid_to_check
+
+        err_msg: str = ''
+
+        if not api_check:
+            err_msg = err_msg + \
+                f'The value provide \'{apikey}\' is not a valid apiKey. '
+        if not uuid_check:
+            err_msg = err_msg + \
+                f'The value provide \'{uuid}\' is not a valid apiKey. '
+
+        raise TypeError(err_msg)
+
+    def generate(self, **kwargs):
+        no_dash: bool = kwargs.get('no_dash', False)
+
+        _uuid: str = str(uuid.uuid4())
+        _apikey: str = self.to_apikey(_uuid)
+
+        return {'apikey': _apikey, 'uuid': _uuid}
